@@ -1,6 +1,6 @@
 CURSORSNAMES := alias all-scroll bottom_left_corner bottom_right_corner bottom_side cell center_ptr closedhand color-picker col-resize context-menu copy crosshair default dnd-move dnd-no-drop down-arrow draft fleur help left-arrow left_side no-drop not-allowed openhand pencil pirate pointer progress right-arrow right_ptr right_side row-resize size_bdiag size_fdiag size_hor size_ver text top_left_corner top_right_corner top_side up-arrow vertical-text wait wayland-cursor x-cursor zoom-in zoom-out
 
-LINKSNAMES := 3085a0e285430894940527032f8b26df 640fb0e74195791501fd1ed57b41487f a2a266d0498c3104214a47bd64ab0fc8 link plus 03b6e0fcb3499374a867c041f52298f0 move split_h 1081e37283d90000800003c07f3ef6bf 6407b0e94181790501fd1e167b474872 b66166c04f8c3109214a4fbd64a50fc8 dnd-copy cross left_ptr size-bdiag size-fdiag size-hor size-ver top_left_arrow 4498f0e0c1937ffe01fd06f973665830 9081237383d90e509aa00f00170e968f dnd-none fcf21c00b30f7e3f83fe0dfd12e71cff size_all 5c6cd98b3f3ebcb1f9c7f1c204630408 d9ce0ab605698f320427677b458ad60b left_ptr_help question_arrow whats_this arrow forbidden circle crossed_circle 9d800788f1b08800ae810202380a0822 e29285e634086352946a0e7090d73106 hand1 hand2 pointing_hand 00000000000000020006000e7e9ffc3f 08e8e1c95fe2fc01f976f1e063a24ccd 3ecb610c1bf2410f44200f48c40d3599 half-busy left_ptr_watch split_v ne-resize sw-resize nw-resize se-resize e-resize h_double_arrow sb_h_double_arrow w-resize 00008160000006810000408080010102 n-resize sb_v_double_arrow s-resize v_double_arrow ibeam xterm watch
+LINKSNAMES := 3085a0e285430894940527032f8b26df 640fb0e74195791501fd1ed57b41487f a2a266d0498c3104214a47bd64ab0fc8 link plus 03b6e0fcb3499374a867c041f52298f0 move split_h 1081e37283d90000800003c07f3ef6bf 6407b0e94181790501fd1e167b474872 b66166c04f8c3109214a4fbd64a50fc8 dnd-copy cross left_ptr size-bdiag size-fdiag size-hor size-ver top_left_arrow 4498f0e0c1937ffe01fd06f973665830 9081237383d90e509aa00f00170e968f dnd-none fcf21c00b30f7e3f83fe0dfd12e71cff size_all 5c6cd98b3f3ebcb1f9c7f1c204630408 d9ce0ab605698f320427677b458ad60b left_ptr_help question_arrow whats_this arrow forbidden circle crossed_circle 9d800788f1b08800ae810202380a0822 e29285e634086352946a0e7090d73106 hand1 hand2 pointing_hand 00000000000000020006000e7e9ffc3f 08e8e1c95fe2fc01f976f1e063a24ccd 3ecb610c1bf2410f44200f48c40d3599 half-busy left_ptr_watch split_v ne-resize sw-resize nw-resize se-resize e-resize h_double_arrow sb_h_double_arrow w-resize 00008160000006810000408080010102 n-resize sb_v_double_arrow s-resize v_double_arrow ibeam xterm watch ew-resize grab grabbing nesw-resize ns-resize nwse-resize tcross
 
 # Deja un pixel
 #SHADOWARG := \( +clone -background black -shadow 80x3+5+5 \) +swap -background none -layers merge +repage
@@ -227,7 +227,20 @@ retrosmart-xcursor-black-color-shadow/cursors/%: src/%.in
 	cd $(dir $@); ln -s $(notdir $^) $(notdir $@)
 %/xterm: %/text
 	cd $(dir $@); ln -s $(notdir $^) $(notdir $@)
-
+%/ew-resize: %/size_hor
+	cd $(dir $@); ln -s $(notdir $^) $(notdir $@)
+%/grab: %/openhand
+	cd $(dir $@); ln -s $(notdir $^) $(notdir $@)
+%/grabbing: %/closedhand
+	cd $(dir $@); ln -s $(notdir $^) $(notdir $@)
+%/nesw-resize: %/size_bdiag
+	cd $(dir $@); ln -s $(notdir $^) $(notdir $@)
+%/ns-resize: %/size_ver
+	cd $(dir $@); ln -s $(notdir $^) $(notdir $@)
+%/nwse-resize: %/size_fdiag
+	cd $(dir $@); ln -s $(notdir $^) $(notdir $@)
+%/tcross: %/crosshair
+	cd $(dir $@); ln -s $(notdir $^) $(notdir $@)
 
 %/index.theme: src/%.theme
 	cp $< $@
